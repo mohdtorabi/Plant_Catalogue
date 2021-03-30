@@ -14,6 +14,7 @@ app.unsubscribe(express.json());
 app.post("/plants", async(req, res) => {
   try {
     console.log(req.body);
+    const newPlant = await pool.query("")
   } catch (error) {
     console.log(
       error.message
