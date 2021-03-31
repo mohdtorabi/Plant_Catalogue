@@ -35,7 +35,7 @@ const ListPlants = () => {
       method: "DELETE"
     })
       .then((plantDeleted) => {
-        console.log(plantDeleted.body);
+        setPlants(plants.filter(plant => plant.plant_id !== id))
       })
       .catch((e) => {
         console.log("error listing plants", e);
