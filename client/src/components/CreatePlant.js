@@ -32,20 +32,14 @@ const CreatePlant = () => {
       };
       const response = await axios("http://localhost:5000/plants", {
         method: "POST",
-        url: '/login',
+        url: '/',
+        headers: {"Content-Type": "application/json"},
         data: JSON.stringify(body)
       });
-      console.log(response);
+      window.location = "/";
     } catch {
       console.log("errorrr");
     }
-    // return await axios.post("http://localhost:5000/plants/")
-    //     .then((res) => {
-    //       console.log(res);
-    //     })
-    //     .catch((error) => {
-    //       console.log("Plant Creation Error: ", error);
-    //     });
   }
 
   return (
