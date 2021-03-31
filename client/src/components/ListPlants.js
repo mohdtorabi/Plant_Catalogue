@@ -8,6 +8,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import axios from "axios";
+import EditPlant from "./EditPlant";
+
 
 const useStyles = makeStyles({
   table: {
@@ -56,6 +58,8 @@ const ListPlants = () => {
             <TableCell align="right">Name</TableCell>
             <TableCell align="right">Description</TableCell>
             <TableCell align="right">Image URL</TableCell>
+            <TableCell align="Center">Edit Plants</TableCell>
+            <TableCell align="Center">Delete Plant</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -67,8 +71,8 @@ const ListPlants = () => {
               <TableCell align="right">{row.name}</TableCell>
               <TableCell align="right">{row.description}</TableCell>
               <TableCell align="right">{row.image}</TableCell>
-              <TableCell align="right"><button>Edit</button></TableCell>
-              <TableCell align="right"><button onClick={()=> deletePlant(row.plant_id)}>Delete</button></TableCell>
+              <TableCell align="center"><EditPlant/></TableCell>
+              <TableCell align="center"><button onClick={()=> deletePlant(row.plant_id)}>Delete</button></TableCell>
             </TableRow>
           ))}
         </TableBody>
