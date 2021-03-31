@@ -18,6 +18,8 @@ const useStyles = makeStyles({
 const ListPlants = () => {
   const classes = useStyles();
   const [plants, setPlants] = useState([])
+
+
   const getPlants = async () => {
     return await axios("http://localhost:5000/plants")
       .then((res) => {
@@ -27,32 +29,24 @@ const ListPlants = () => {
         console.log("error listing plants", e);
       })
   }
-  const rows = [
-    {
-      id: 1,
-      name: 'Damien',
-      description: "25",
-      image:"hello"
-    },
-    {
-      id: 2,
-      name: 'Nicolas',
-      description: "25",
-      image:"hello"
-    },
-    {
-      id: 3,
-      name: 'Kate',
-      description: "25",
-      image:"hello",
 
-    },
-  ];
+  const deletePlant = async (id) => {
+    return await axios(`http://localhost:5000/plants/${id}`, {
+      method: "DELETE"
+    })
+      .then((plantDeleted) => {
+        console.log(plantDeleted.body);
+      })
+      .catch((e) => {
+        console.log("error listing plants", e);
+      })
+  }
 
   useEffect(() => {
     getPlants()
   })
-  console.log(plants);
+
+
   return (
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
@@ -74,7 +68,7 @@ const ListPlants = () => {
               <TableCell align="right">{row.description}</TableCell>
               <TableCell align="right">{row.image}</TableCell>
               <TableCell align="right"><button>Edit</button></TableCell>
-              <TableCell align="right"><button onClick={()=> deletePlant(plant.plant_id)}>Delete</button></TableCell>
+              <TableCell align="right"><button onClick={()=> deletePlant(row.plant_id)}>Delete</button></TableCell>
             </TableRow>
           ))}
         </TableBody>
