@@ -11,11 +11,12 @@ app.use(express.json());
 
 //create Plant
 
-app.post("/plants", async(req, res) => {
+app.post("/plants", async (req, res) => {
   try {
     console.log(req.body);
     const {name, description, image} = req.body;
     const newPlant = await pool.query("INSERT INTO plant (name, description, image) VALUES($1, $2, $3)", [name, description, image]);
+    res.json(newPlant)
   } catch (error) {
     console.log(
       error.message
