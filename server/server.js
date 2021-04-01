@@ -14,8 +14,8 @@ app.use(express.json());
 app.post("/plants", async (req, res) => {
   try {
     console.log(req.body);
-    const {name, description, image} = req.body;
-    const newPlant = await pool.query("INSERT INTO plant (name, description, image) VALUES($1, $2, $3)", [name, description, image]);
+    const {name, description, family, kingdom, species} = req.body;
+    const newPlant = await pool.query("INSERT INTO plant (name, description, family, kingdom, species) VALUES($1, $2, $3, $4, $5)", [name, description, family, kingdom, species]);
     res.json(newPlant)
   } catch (error) {
     console.log(
@@ -48,11 +48,13 @@ app.put("/plants/:id", async(req, res) => {
   try {
     console.log(req.body);
     const {id} = req.params;
-    const {name, description, image} = req.body;
+    const {name, description, family, kingdom, species} = req.body;
 
     const updateNamePlant = await pool.query("UPDATE plant SET name = $1 WHERE plant_id = $2", [name, id]);
     const updateDescriptionPlant = await pool.query("UPDATE plant SET description = $1 WHERE plant_id = $2", [description, id]);
-    const updateImagePlant = await pool.query("UPDATE plant SET image = $1 WHERE plant_id = $2", [image, id]);
+    const updateFamilyPlant = await pool.query("UPDATE plant SET family = $1 WHERE plant_id = $2", [family, id]);
+    const updateKingdomPlant = await pool.query("UPDATE plant SET kingdom = $1 WHERE plant_id = $2", [kingdom, id]);
+    const updateSpeciesPlant = await pool.query("UPDATE plant SET species = $1 WHERE plant_id = $2", [species, id]);
 
     res.json("plant was updated")
   } catch (error) {
