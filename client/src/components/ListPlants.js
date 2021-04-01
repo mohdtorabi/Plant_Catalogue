@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from "react";
+import React, {Fragment, useEffect, useState} from "react";
+import { useHistory, Link } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -9,7 +10,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import axios from "axios";
 import EditPlant from "./EditPlant";
-
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
   table: {
@@ -44,40 +45,54 @@ const ListPlants = () => {
       })
   }
 
+  const history = useHistory();
+
+  
+
   useEffect(() => {
     getPlants()
   })
 
 
   return (
-    <TableContainer component={Paper}>
+    <Fragment>
+      <h1>Plant Catalogue</h1>
+      <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell>ID</TableCell>
-            <TableCell align="right">Name</TableCell>
-            <TableCell align="right">Description</TableCell>
-            <TableCell align="right">Image URL</TableCell>
-            <TableCell align="Center">Edit Plants</TableCell>
+            <TableCell align="center">Name</TableCell>
+            <TableCell align="center">Description</TableCell>
+            <TableCell align="center">Family</TableCell>
+            <TableCell align="center">Kingdom</TableCell>
+            <TableCell align="center">Species</TableCell>
+            <TableCell align="Center">Edit Plant</TableCell>
             <TableCell align="Center">Delete Plant</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {plants.map((row) => (
-            <TableRow key={row.plant_id}>
+          {plants.map((plant) => (
+            <TableRow key={plant.plant_id}>
               <TableCell component="th" scope="row">
-                {row.plant_id}
+                {plant.plant_id}
               </TableCell>
-              <TableCell align="right">{row.name}</TableCell>
-              <TableCell align="right">{row.description}</TableCell>
-              <TableCell align="right">{row.image}</TableCell>
-              <TableCell align="center"><EditPlant/></TableCell>
-              <TableCell align="center"><button onClick={()=> deletePlant(row.plant_id)}>Delete</button></TableCell>
+              <TableCell align="center">{plant.name}</TableCell>
+              <TableCell align="center">{plant.description}</TableCell>
+              <TableCell align="center">{plant.family}</TableCell>
+              <TableCell align="center">{plant.kingdom}</TableCell>
+              <TableCell align="center">{plant.species}</TableCell>
+              <TableCell align="center"><EditPlant plant={plant}/></TableCell>
+              <TableCell align="center"><Button onClick={()=> deletePlant(plant.plant_id)} variant="contained" color="secondary">
+              Delete
+      </Button></TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
+    </Fragment>
+    
   );
 }
 

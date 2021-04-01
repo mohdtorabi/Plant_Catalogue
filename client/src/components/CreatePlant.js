@@ -19,7 +19,9 @@ const CreatePlant = () => {
   const [plantDetail, setPlantDetail] = useState({
     name: "",
     description: "",
-    image: ""
+    family: "",
+    kingdom: "",
+    species: "",
   })
 
   const onSubmitForm = async (e) => {
@@ -28,7 +30,9 @@ const CreatePlant = () => {
       const body = {
         name: plantDetail.name, 
         description: plantDetail.description, 
-        image: plantDetail.image
+        family: plantDetail.family,
+        kingdom: plantDetail.kingdom,
+        species: plantDetail.species,
       };
       const response = await axios("http://localhost:5000/plants", {
         method: "POST",
@@ -36,7 +40,7 @@ const CreatePlant = () => {
         headers: {"Content-Type": "application/json"},
         data: JSON.stringify(body)
       });
-      window.location = "/";
+      window.location = "/"
     } catch {
       console.log("errorrr");
     }
@@ -68,16 +72,36 @@ const CreatePlant = () => {
         />
         <TextField
           id="standard-error-helper-text"
-          label="Image URL"
-          type="url"
-          value={plantDetail.image}
+          label="Plant Family"
+          type="text"
+          value={plantDetail.family}
           onChange={e => setPlantDetail((prev) => ({
             ...prev,
-            image: e.target.value,
+            family: e.target.value,
           }))}
         />
-        <button>
-          Submit Plant
+        <TextField
+          id="standard-error-helper-text"
+          label="Plant Kingdom"
+          type="url"
+          value={plantDetail.kingdom}
+          onChange={e => setPlantDetail((prev) => ({
+            ...prev,
+            kingdom: e.target.value,
+          }))}
+        />
+        <TextField
+          id="standard-error-helper-text"
+          label="Plant Species"
+          type="url"
+          value={plantDetail.species}
+          onChange={e => setPlantDetail((prev) => ({
+            ...prev,
+            species: e.target.value,
+          }))}
+        />
+        <button style={{direction:"flex", justifyContent:"flex-end",marginTop:"20px",fontSize:"0.875em", color: "white", backgroundColor:"#3f51b5", boxShadow:"0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%)", padding:"6px 16px", borderRadius:"4px", boxSizing:"border-box" }}>
+          Create Plant
         </button>
       </form>
       

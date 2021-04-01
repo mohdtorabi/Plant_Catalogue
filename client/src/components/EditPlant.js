@@ -1,9 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import TextField from "@material-ui/core/TextField";
+import axios from "axios";
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -19,9 +21,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function EditPlant() {
+export default function EditPlant({plant}) {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+
+  const [plantDetail, setPlantDetail] = useState({
+    name: plant.name,
+    description: plant.description,
+    family: plant.family,
+    kingdom: plant.kingdom,
+    species: plant.species,
+  })
 
   const handleOpen = () => {
     setOpen(true);
@@ -31,11 +41,33 @@ export default function EditPlant() {
     setOpen(false);
   };
 
+  const updatePlantDetail = async (e) => {
+    e.preventDefault()
+    try {
+      const body = {
+        name: plantDetail.name, 
+        description: plantDetail.description, 
+        family: plantDetail.family,
+        kingdom: plantDetail.kingdom,
+        species: plantDetail.species,
+      };
+      const response = await axios(`http://localhost:5000/plants/${plant.plant_id}`, {
+        method: "PUT",
+        url: '/',
+        headers: {"Content-Type": "application/json"},
+        data: JSON.stringify(body)
+      });
+      window.location = "/";
+    } catch {
+      console.log("errorrr");
+    }
+  }
+
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
-        react-transition-group
-      </button>
+      <Button variant="contained" color="primary" type="button" onClick={handleOpen}>
+        Edit
+      </Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -60,39 +92,63 @@ export default function EditPlant() {
                 id="standard-error-helper-text"
                 label="Plant Name"
                 type="text"
-                // value={plantDetail.name}
-                // onChange={(e) =>
-                //   setPlantDetail((prev) => ({
-                //     ...prev,
-                //     name: e.target.value,
-                //   }))
-                // }
+                value={plantDetail.name}
+                onChange={(e) =>
+                  setPlantDetail((prev) => ({
+                    ...prev,
+                    name: e.target.value,
+                  }))
+                }
               />
               <TextField
                 id="standard-error-helper-text"
                 label="Plant Description"
                 type="text"
-                // value={plantDetail.description}
-                // onChange={(e) =>
-                //   setPlantDetail((prev) => ({
-                //     ...prev,
-                //     description: e.target.value,
-                //   }))
-                // }
+                value={plantDetail.description}
+                onChange={(e) =>
+                  setPlantDetail((prev) => ({
+                    ...prev,
+                    description: e.target.value,
+                  }))
+                }
               />
               <TextField
                 id="standard-error-helper-text"
-                label="Image URL"
+                label="Plant Family"
                 type="url"
-                // value={plantDetail.image}
-                // onChange={(e) =>
-                //   setPlantDetail((prev) => ({
-                //     ...prev,
-                //     image: e.target.value,
-                //   }))
-                // }
+                value={plantDetail.family}
+                onChange={(e) =>
+                  setPlantDetail((prev) => ({
+                    ...prev,
+                    family: e.target.value,
+                  }))
+                }
               />
-              <button>Edit Plant</button>
+              <TextField
+                id="standard-error-helper-text"
+                label="Plant Kingdom"
+                type="url"
+                value={plantDetail.kingdom}
+                onChange={(e) =>
+                  setPlantDetail((prev) => ({
+                    ...prev,
+                    kingdom: e.target.value,
+                  }))
+                }
+              />
+              <TextField
+                id="standard-error-helper-text"
+                label="Plant Species"
+                type="url"
+                value={plantDetail.species}
+                onChange={(e) =>
+                  setPlantDetail((prev) => ({
+                    ...prev,
+                    species: e.target.value,
+                  }))
+                }
+              />
+              <Button variant="contained" color="primary" onClick={e => updatePlantDetail(e)}>Edit Plant</Button>
             </form>
           </div>
         </Fade>
