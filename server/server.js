@@ -27,7 +27,7 @@ app.post("/plants", async (req, res) => {
 //get all plants
 app.get("/plants", async(req, res) => {
   try {
-    const allPlants = await pool.query("SELECT * FROM plant")
+    const allPlants = await pool.query("SELECT * FROM plant;")
     res.json(allPlants.rows)
   } catch (error){
     console.log(error.message);
@@ -65,9 +65,9 @@ app.put("/plants/:id", async(req, res) => {
 //delete a plant
 app.delete("/plants/:id", async(req, res) => {
   try {
-    const { id } = req.body
+    const { id } = req.params
+    console.log(id);
     const deletePlant = await pool.query("DELETE FROM plant WHERE plant_id= $1", [id]);
-
     res.json("plant was deleted")
   } catch (error){
     console.log(error.message);
