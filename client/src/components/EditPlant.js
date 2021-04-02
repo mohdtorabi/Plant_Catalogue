@@ -65,7 +65,7 @@ export default function EditPlant({plant}) {
 
   return (
     <div>
-      <Button variant="contained" color="primary" type="button" onClick={handleOpen}>
+      <Button className="editButton" variant="contained" color="primary" type="button" onClick={handleOpen}>
         Edit
       </Button>
       <Modal
@@ -89,6 +89,7 @@ export default function EditPlant({plant}) {
               autoComplete="off"
             >
               <TextField
+              className="sag1"
                 id="standard-error-helper-text"
                 label="Plant Name"
                 type="text"
@@ -101,6 +102,7 @@ export default function EditPlant({plant}) {
                 }
               />
               <TextField
+              className="sag2"
                 id="standard-error-helper-text"
                 label="Plant Description"
                 type="text"
@@ -113,6 +115,7 @@ export default function EditPlant({plant}) {
                 }
               />
               <TextField
+              className="sag3"
                 id="standard-error-helper-text"
                 label="Plant Family"
                 type="url"
@@ -125,6 +128,7 @@ export default function EditPlant({plant}) {
                 }
               />
               <TextField
+              className="sag4"
                 id="standard-error-helper-text"
                 label="Plant Kingdom"
                 type="url"
@@ -137,6 +141,7 @@ export default function EditPlant({plant}) {
                 }
               />
               <TextField
+              className="sag5"
                 id="standard-error-helper-text"
                 label="Plant Species"
                 type="url"
@@ -148,7 +153,7 @@ export default function EditPlant({plant}) {
                   }))
                 }
               />
-              <Button variant="contained" color="primary" onClick={e => updatePlantDetail(e)}>Edit Plant</Button>
+              <Button className="sag6" variant="contained" color="primary" onClick={e => updatePlantDetail(e)}>Edit Plant</Button>
             </form>
           </div>
         </Fade>

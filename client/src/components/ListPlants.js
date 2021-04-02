@@ -83,7 +83,7 @@ const ListPlants = () => {
               <TableCell align="center">{plant.kingdom}</TableCell>
               <TableCell align="center">{plant.species}</TableCell>
               <TableCell align="center"><EditPlant plant={plant}/></TableCell>
-              <TableCell align="center"><Button onClick={()=> deletePlant(plant.plant_id)} variant="contained" color="secondary">
+              <TableCell align="center"><Button className="deleteButton" onClick={()=> deletePlant(plant.plant_id)} variant="contained" color="secondary">
               Delete
       </Button></TableCell>
             </TableRow>

@@ -3,7 +3,6 @@ const app =express();
 const cors = require("cors");
 const pool = require("./db");
 const path = require('path');
-const config = require('dotenv').config()
 
 const PORT = process.env.PORT ? process.env.PORT : 5000;
 
@@ -25,7 +24,7 @@ app.post("/plants", async (req, res) => {
     res.json(newPlant)
   } catch (error) {
     console.log(
-      error.message
+      "hello", error.message
     );
   }
 })
@@ -38,7 +37,7 @@ app.get("/plants", async(req, res) => {
     const allPlants = await pool.query("SELECT * FROM plant;")
     res.json(allPlants.rows)
   } catch (error){
-    console.log(error.message);
+    console.log("hello", error.message);
   }
 })
 //get a plant
@@ -48,7 +47,7 @@ app.get("/plants/:id", async(req, res) => {
     const plant = await pool.query("SELECT * FROM plant WHERE plant_id= $1", [id])
     res.json(plant.rows)
   } catch (error){
-    console.log(error.message);
+    console.log("hello", error.message);
   }
 })
 //update a plant
@@ -67,7 +66,7 @@ app.put("/plants/:id", async(req, res) => {
     res.json("plant was updated")
   } catch (error) {
     console.log(
-      error.message
+      "hello", error.message
     );
   }
 })
@@ -80,7 +79,7 @@ app.delete("/plants/:id", async(req, res) => {
     const deletePlant = await pool.query("DELETE FROM plant WHERE plant_id= $1", [id]);
     res.json("plant was deleted")
   } catch (error){
-    console.log(error.message);
+    console.log("hello", error.message);
   }
 })
 

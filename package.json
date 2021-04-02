@@ -21,5 +21,9 @@
   "bugs": {
     "url": "https://github.com/mohdtorabi/Plant_Catalogue/issues"
   },
-  "homepage": "https://github.com/mohdtorabi/Plant_Catalogue#readme"
+  "homepage": "https://github.com/mohdtorabi/Plant_Catalogue#readme",
+  "devDependencies": {
+    "@cypress/react": "^4.16.4",
+    "cypress": "^6.8.0"
+  }
 }
