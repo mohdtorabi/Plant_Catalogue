@@ -24,7 +24,7 @@ const ListPlants = () => {
 
 
   const getPlants = async () => {
-    return await axios("http://localhost:8080/plants")
+    return await axios("http://localhost:5000/plants")
       .then((res) => {
         setPlants(res.data)
       })
@@ -34,7 +34,7 @@ const ListPlants = () => {
   }
 
   const deletePlant = async (id) => {
-    return await axios(`http://localhost:8080/plants/${id}`, {
+    return await axios(`http://localhost:5000/plants/${id}`, {
       method: "DELETE"
     })
       .then((plantDeleted) => {
