@@ -100,7 +100,7 @@ const CreatePlant = () => {
             species: e.target.value,
           }))}
         />
-        <button style={{direction:"flex", justifyContent:"flex-end",marginTop:"20px",fontSize:"0.875em", color: "white", backgroundColor:"#3f51b5", boxShadow:"0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%)", padding:"6px 16px", borderRadius:"4px", boxSizing:"border-box" }}>
+        <button style={{direction:"flex", justifyContent:"flex-end",marginTop:"20px",fontSize:"0.875em", color: "white", backgroundColor:"#3f51b5", boxShadow:"0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%)", padding:"6px 16px", borderRadius:"4px", boxSizing:"border-box", cursor:"pointer" }}>
           Create Plant
         </button>
       </form>
