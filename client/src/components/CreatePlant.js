@@ -34,7 +34,7 @@ const CreatePlant = () => {
         kingdom: plantDetail.kingdom,
         species: plantDetail.species,
       };
-      const response = await axios("/plants", {
+      const response = await axios(`http://localhost:${process.env.PORT}/plants`, {
         method: "POST",
         url: '/',
         headers: {"Content-Type": "application/json"},
