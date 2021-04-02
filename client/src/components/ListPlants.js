@@ -27,6 +27,7 @@ const ListPlants = () => {
     return await axios("http://localhost:5000/plants")
       .then((res) => {
         setPlants(res.data)
+        console.log("hello");
       })
       .catch((e) => {
         console.log("error listing plants", e);
@@ -51,7 +52,7 @@ const ListPlants = () => {
 
   useEffect(() => {
     getPlants()
-  },[])
+  },[plants])
 
 
   return (
