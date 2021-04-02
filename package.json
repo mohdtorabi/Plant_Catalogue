@@ -1,0 +1,25 @@
+{
+  "name": "plant_catalogue",
+  "version": "1.0.0",
+  "description": "## Tech Stack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd server && npm install && npm start",
+    "heroku-postbuild": "cd client && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohdtorabi/Plant_Catalogue.git"
+  },
+  "engines": {
+    "node": "12.19.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mohdtorabi/Plant_Catalogue/issues"
+  },
+  "homepage": "https://github.com/mohdtorabi/Plant_Catalogue#readme"
+}

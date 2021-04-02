@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
 export default function EditPlant({plant}) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
-
   const [plantDetail, setPlantDetail] = useState({
     name: plant.name,
     description: plant.description,

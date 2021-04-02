@@ -2,10 +2,15 @@ const express = require("express");
 const app =express();
 const cors = require("cors");
 const pool = require("./db");
+const path = require('path');
+
+
 
 //middleware
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '../client/build')));
+
 
 //ROUTES//
 
@@ -25,6 +30,8 @@ app.post("/plants", async (req, res) => {
 })
 
 //get all plants
+
+
 app.get("/plants", async(req, res) => {
   try {
     const allPlants = await pool.query("SELECT * FROM plant;")
@@ -75,6 +82,10 @@ app.delete("/plants/:id", async(req, res) => {
     console.log(error.message);
   }
 })
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
 
 app.listen(5000, () => {
   console.log("server has started on port 5000");

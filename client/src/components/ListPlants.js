@@ -51,7 +51,7 @@ const ListPlants = () => {
 
   useEffect(() => {
     getPlants()
-  })
+  },[])
 
 
   return (
