@@ -5,7 +5,7 @@ const pool = require("./db");
 const path = require('path');
 require('dotenv').config();
 
-PORT = process.env.PORT || 80
+PORT = process.env.PORT || 8080
 
 //middleware
 app.use(cors());
