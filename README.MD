@@ -33,5 +33,14 @@
 
 6. app will run on `https://localhost:3000`
 
-Open [https://plant-catalogue.herokuapp.com/](https://plant-catalogue.herokuapp.com/0) to view it in the browser.
+
+## To test the app follow the underlined steps:
+1. switch to app_testing branch 
+2. In the Server project folder run `npm start`
+3. In the Client project folder run `npm start`
+4. In the root directory run the following commant line : `./node_modules/.bin/cypress open             
+` 
+5. when cypress page opens open sample_spec.js and follow the tests.
+
+Open [https://plant-catalogue.herokuapp.com/](https://plant-catalogue.herokuapp.com/) to view it in the browser.
 #
