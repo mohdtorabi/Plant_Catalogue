@@ -34,7 +34,7 @@ const ListPlants = () => {
   }
 
   const deletePlant = async (id) => {
-    return await axios(`http://localhost:${process.env.PORT}/plants/${id}`, {
+    return await axios(`/plants/${id}`, {
       method: "DELETE"
     })
       .then((plantDeleted) => {

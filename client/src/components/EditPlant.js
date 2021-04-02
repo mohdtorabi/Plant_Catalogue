@@ -51,7 +51,7 @@ export default function EditPlant({plant}) {
         kingdom: plantDetail.kingdom,
         species: plantDetail.species,
       };
-      const response = await axios(`http://localhost:${process.env.PORT}/plants/${plant.plant_id}`, {
+      const response = await axios(`/plants/${plant.plant_id}`, {
         method: "PUT",
         url: '/',
         headers: {"Content-Type": "application/json"},
