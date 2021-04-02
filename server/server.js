@@ -5,7 +5,7 @@ const pool = require("./db");
 const path = require('path');
 require('dotenv').config();
 
-
+PORT = process.env.PORT || 80
 
 //middleware
 app.use(cors());
@@ -88,8 +88,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
-console.log(process.env.PORT);
 
-app.listen(5000, () => {
-  console.log("server has started on port 5000");
+app.listen(PORT, () => {
+  console.log(`server has started on port ${PORT}`);
 });
