@@ -24,10 +24,9 @@ const ListPlants = () => {
 
 
   const getPlants = async () => {
-    return await axios("http://localhost:5000/plants")
+    return await axios("http://localhost:5000/plants" || "http://localhost:5432/plants")
       .then((res) => {
         setPlants(res.data)
-        console.log("hello");
       })
       .catch((e) => {
         console.log("error listing plants", e);
@@ -35,7 +34,7 @@ const ListPlants = () => {
   }
 
   const deletePlant = async (id) => {
-    return await axios(`http://localhost:5000/plants/${id}`, {
+    return await axios(`http://localhost:5000/plants/${id}` || `http://localhost:5432/plants/${id}`, {
       method: "DELETE"
     })
       .then((plantDeleted) => {
@@ -52,7 +51,7 @@ const ListPlants = () => {
 
   useEffect(() => {
     getPlants()
-  },[plants])
+  },[])
 
 
   return (

@@ -86,7 +86,7 @@ app.delete("/plants/:id", async(req, res) => {
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
-//process.env.PORT || 
+
 app.listen(process.env.PORT || 5000, () => {
   console.log("server has started on port 5000");
 });
