@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, '../client/build')));
 
 //create Plant
 
-app.post("/plants", async (req, res) => {
+app.post("/api/plants", async (req, res) => {
   try {
     console.log(req.body);
     const {name, description, family, kingdom, species} = req.body;
@@ -33,7 +33,7 @@ app.post("/plants", async (req, res) => {
 //get all plants
 
 
-app.get("/plants", async(req, res) => {
+app.get("/api/plants", async(req, res) => {
   try {
     const allPlants = await pool.query("SELECT * FROM plant;")
     res.json(allPlants.rows)
@@ -42,7 +42,7 @@ app.get("/plants", async(req, res) => {
   }
 })
 //get a plant
-app.get("/plants/:id", async(req, res) => {
+app.get("/api/plants/:id", async(req, res) => {
   try {
     const { id } = req.body
     const plant = await pool.query("SELECT * FROM plant WHERE plant_id= $1", [id])
@@ -52,7 +52,7 @@ app.get("/plants/:id", async(req, res) => {
   }
 })
 //update a plant
-app.put("/plants/:id", async(req, res) => {
+app.put("/api/plants/:id", async(req, res) => {
   try {
     console.log(req.body);
     const {id} = req.params;
@@ -73,7 +73,7 @@ app.put("/plants/:id", async(req, res) => {
 })
 
 //delete a plant
-app.delete("/plants/:id", async(req, res) => {
+app.delete("/api/plants/:id", async(req, res) => {
   try {
     const { id } = req.params
     console.log(id);
