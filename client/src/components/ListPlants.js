@@ -24,8 +24,9 @@ const ListPlants = () => {
 
 
   const getPlants = async () => {
-    return await fetch("/api/plants")
+    return await axios("/api/plants")
       .then((res) => {
+        console.log(res.data);
         setPlants(res.data)
       })
       .catch((e) => {
@@ -34,7 +35,7 @@ const ListPlants = () => {
   }
 
   const deletePlant = async (id) => {
-    return await fetch(`/api/plants/${id}`, {
+    return await axios(`/api/plants/${id}`, {
       method: "DELETE"
     })
       .then((plantDeleted) => {
@@ -53,47 +54,51 @@ const ListPlants = () => {
     getPlants()
   },[])
 
-
-  return (
-    <Fragment>
-      <h1>Plant Catalogue</h1>
-      <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>ID</TableCell>
-            <TableCell align="center">Name</TableCell>
-            <TableCell align="center">Description</TableCell>
-            <TableCell align="center">Family</TableCell>
-            <TableCell align="center">Kingdom</TableCell>
-            <TableCell align="center">Species</TableCell>
-            <TableCell align="Center">Edit Plant</TableCell>
-            <TableCell align="Center">Delete Plant</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {plants.map((plant) => (
-            <TableRow key={plant.plant_id}>
-              <TableCell component="th" scope="row">
-                {plant.plant_id}
-              </TableCell>
-              <TableCell align="center">{plant.name}</TableCell>
-              <TableCell align="center">{plant.description}</TableCell>
-              <TableCell align="center">{plant.family}</TableCell>
-              <TableCell align="center">{plant.kingdom}</TableCell>
-              <TableCell align="center">{plant.species}</TableCell>
-              <TableCell align="center"><EditPlant plant={plant}/></TableCell>
-              <TableCell align="center"><Button onClick={()=> deletePlant(plant.plant_id)} variant="contained" color="secondary">
-              Delete
-      </Button></TableCell>
+  if (plants) {
+    return (
+      <Fragment>
+        <h1>Plant Catalogue</h1>
+        <TableContainer component={Paper}>
+        <Table className={classes.table} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>ID</TableCell>
+              <TableCell align="center">Name</TableCell>
+              <TableCell align="center">Description</TableCell>
+              <TableCell align="center">Family</TableCell>
+              <TableCell align="center">Kingdom</TableCell>
+              <TableCell align="center">Species</TableCell>
+              <TableCell align="Center">Edit Plant</TableCell>
+              <TableCell align="Center">Delete Plant</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-    </Fragment>
-    
-  );
+          </TableHead>
+          <TableBody>
+            {plants.map((plant) => (
+              <TableRow key={plant.plant_id}>
+                <TableCell component="th" scope="row">
+                  {plant.plant_id}
+                </TableCell>
+                <TableCell align="center">{plant.name}</TableCell>
+                <TableCell align="center">{plant.description}</TableCell>
+                <TableCell align="center">{plant.family}</TableCell>
+                <TableCell align="center">{plant.kingdom}</TableCell>
+                <TableCell align="center">{plant.species}</TableCell>
+                <TableCell align="center"><EditPlant plant={plant}/></TableCell>
+                <TableCell align="center"><Button onClick={()=> deletePlant(plant.plant_id)} variant="contained" color="secondary">
+                Delete
+        </Button></TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      </Fragment>
+      
+    );
+  } else {
+    return <div>no plants</div>
+  }
+  
 }
 
 

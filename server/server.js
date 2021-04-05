@@ -1,5 +1,6 @@
 const express = require("express");
-const app =express();
+const app =express(),
+bodyParser = require("body-parser");
 const cors = require("cors");
 const pool = require("./db");
 const path = require('path');
@@ -8,7 +9,7 @@ const PORT = 5000;
 
 //middleware
 app.use(cors());
-app.use(express.json());
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../client/build')));
 
 
