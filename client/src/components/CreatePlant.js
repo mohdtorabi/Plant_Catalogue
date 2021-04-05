@@ -34,12 +34,12 @@ const CreatePlant = () => {
         kingdom: plantDetail.kingdom,
         species: plantDetail.species,
       };
-      console.log(body);
       const response = await axios("/api/plants", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         data: JSON.stringify(body)
       });
+      console.log(response);
       window.location = "/";
     } catch {
       console.log("errorrr");

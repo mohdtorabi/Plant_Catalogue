@@ -5,7 +5,7 @@ const cors = require("cors");
 const pool = require("./db");
 const path = require('path');
 const config = require('dotenv').config()
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 80;
 
 //middleware
 app.use(cors());

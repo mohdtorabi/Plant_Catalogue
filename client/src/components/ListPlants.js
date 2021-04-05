@@ -26,7 +26,6 @@ const ListPlants = () => {
   const getPlants = async () => {
     return await axios("/api/plants")
       .then((res) => {
-        console.log(res.data);
         setPlants(res.data)
       })
       .catch((e) => {
