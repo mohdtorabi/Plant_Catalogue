@@ -5,7 +5,7 @@ const cors = require("cors");
 const pool = require("./db");
 const path = require('path');
 const config = require('dotenv').config()
-const PORT = 5000;
+const port = process.env.PORT || 5000;
 
 //middleware
 app.use(cors());
@@ -89,6 +89,6 @@ app.get('*', (req, res) => {
 });
 
 
-app.listen(PORT, () => {
-  console.log(`server has started on port ${PORT}`);
+app.listen(port, () => {
+  console.log(`server has started on port ${port}`);
 });
