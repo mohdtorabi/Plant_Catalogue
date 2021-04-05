@@ -53,6 +53,7 @@ export default function EditPlant({plant}) {
       };
       const response = await fetch(`/api/plants/${plant.plant_id}`, {
         method: "PUT",
+        url: '/',
         headers: {"Content-Type": "application/json"},
         data: JSON.stringify(body)
       });
