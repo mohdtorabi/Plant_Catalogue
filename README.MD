@@ -20,8 +20,9 @@
 
 #
 ## To run the app follow the underlined steps:
+*** make sure build the database and use .env.example for your .env setup. next follow the steps bellow:
 
-1. If running on local device before running the server, comment out `process.env.PORT ||` in server.js `line 90` 
+1. If running on local device before running the server, comment out `process.env.PORT ||` in server.js`
 
 2. In the Server project folder run `npm install` to install all dependencies
 
@@ -45,5 +46,5 @@
 
 5. when cypress page opens open sample_spec.js and follow the tests.
 
-Open [https://plant-catalogue.herokuapp.com/](https://plant-catalogue.herokuapp.com/0) to view it in the browser.
+Open [https://plant-catalogue.herokuapp.com/](https://plant-catalogue.herokuapp.com/) to view it in the browser.
 #

@@ -1,5 +1,4 @@
 import React, {Fragment, useEffect, useState} from "react";
-import { useHistory, Link } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -22,7 +21,7 @@ const ListPlants = () => {
   const classes = useStyles();
   const [plants, setPlants] = useState([])
 
-
+  // listing all plants by calling backend on app visit
   const getPlants = async () => {
     return await axios("/api/plants")
       .then((res) => {
@@ -32,7 +31,7 @@ const ListPlants = () => {
         console.log("error listing plants", e);
       })
   }
-
+  // making call to backend to delete a plant on button click
   const deletePlant = async (id) => {
     return await axios(`/api/plants/${id}`, {
       method: "DELETE"
@@ -45,7 +44,6 @@ const ListPlants = () => {
       })
   }
 
-  const history = useHistory();
 
   
 

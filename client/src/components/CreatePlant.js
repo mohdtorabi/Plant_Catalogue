@@ -24,6 +24,7 @@ const CreatePlant = () => {
     species: "",
   })
 
+  // making call to backend for creating a plant on form submission
   const onSubmitForm = async (e) => {
     e.preventDefault()
     try {
@@ -42,7 +43,7 @@ const CreatePlant = () => {
       console.log(response);
       window.location = "/";
     } catch {
-      console.log("errorrr");
+      console.log("Plant Creation Error");
     }
   }
 
