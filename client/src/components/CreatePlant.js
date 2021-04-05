@@ -34,7 +34,7 @@ const CreatePlant = () => {
         kingdom: plantDetail.kingdom,
         species: plantDetail.species,
       };
-      const response = await axios("/api/plants", {
+      const response = await fetch("/api/plants", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         data: JSON.stringify(body)
